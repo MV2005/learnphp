@@ -10,7 +10,7 @@ spl_autoload_register(function ($className){
 use App\Router;
 
 require __DIR__ . '/../routes.php';
-
+include __DIR__ . '/../helpers.php';
 
 //    var_dump(Router::$routes);
 
