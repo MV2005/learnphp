@@ -29,4 +29,18 @@ $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
 return $stmt->fetchAll();
 
     }
+
+    public function insert($table, $fields){
+      var_dump($fields);
+
+
+      $sql = "INSERT INTO $table  (firstname, lastname, email)
+      VALUES ('John', 'Doe', 'john@example.com')";
+      var_dump($sql);
+      die();
+
+      // use exec() because no results are returned
+      $this->conn->exec($sql);
+
+    }
 }
