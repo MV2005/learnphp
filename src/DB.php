@@ -70,5 +70,12 @@ return $stmt->fetch();
   $stmt->execute();
 
     }
+    public function delete($table, $id){
+      $sql = "DELETE FROM $table WHERE id=$id";
+
+  // Prepare statement
+  $this->conn->exec($sql);
+
+    }
 }
 

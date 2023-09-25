@@ -24,5 +24,10 @@ public static function find($id){
         } else {  
         $db->insert(static::$table, $fields);
     }
-    }
 }
+    public function delete(){
+        $db = new DB();
+        $db->delete(static::$table, $this->id);
+    
+    }
+    }

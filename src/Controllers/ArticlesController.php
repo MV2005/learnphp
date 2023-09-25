@@ -40,5 +40,10 @@ class ArticlesController {
         $article->save();
         header('Location: /admin/articles');
     }
-    
+    public function delete(){
+        $id = $_GET['id'];
+        $article = Article::find($id);
+        $article->delete();
+        header('Location: /admin/articles');
+    }
 }
