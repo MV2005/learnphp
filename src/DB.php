@@ -29,18 +29,26 @@ $stmt->setFetchMode(PDO::FETCH_CLASS, $class);
 return $stmt->fetchAll();
 
     }
+    public function find($table, $class, $id){
+      $stmt = $this->conn->prepare("SELECT  * FROM $table WHERE id=$id");
+      $stmt->execute();
+
+// set the resulting array to associative
+$stmt->setFetchMode(PDO::FETCH_CLASS, $class);
+return $stmt->fetch();
+
+    }
 
     public function insert($table, $fields){
-      var_dump($fields);
-
-
-      $sql = "INSERT INTO $table  (firstname, lastname, email)
-      VALUES ('John', 'Doe', 'john@example.com')";
-      var_dump($sql);
-      die();
-
+    
+      unset($fields['id']);
+      $fieldNameText = implode(', ',array_keys($fields));
+      $fieldValuesText = implode("' ,  '",($fields));
+      $sql = "INSERT INTO $table ($fieldNameText)
+      VALUES ('$fieldValuesText')";
       // use exec() because no results are returned
       $this->conn->exec($sql);
 
     }
 }
+
