@@ -50,5 +50,25 @@ return $stmt->fetch();
       $this->conn->exec($sql);
 
     }
+
+    public function update($table, $fields){
+    $id=$fields['id'];
+      unset($fields['id']);
+      $setText = '';
+      foreach($fields as $field=>$value){  
+        $setText .= "$field='$value',";
+      }
+      $setText = rtrim($setText, ",");
+      $sql = "UPDATE $table SET $setText  WHERE id=$id";
+      
+
+    
+  // Prepare statement
+  $stmt = $this->conn->prepare($sql);
+
+  // execute the query
+  $stmt->execute();
+
+    }
 }
 
