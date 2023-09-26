@@ -22,9 +22,21 @@ header('Location: /login');
     
   }
   public function login(){
-    var_dump();
+    $user= User::where('email', $_POST['email']);
+    $user = $user[0] ?? null;
+    if($user && password_verify($_POST['password'], $user->password)){
+      $_SESSION['user'] = $user->id;
+      header('Location: /');
+    } else {
+      header('Location: /login');
+    }
+
   }
   public function loginForm(){
     view('auth/login');
+  }
+  public function logout(){
+    unset($_SESSION['user']);
+    header('Location /');
   }
     }

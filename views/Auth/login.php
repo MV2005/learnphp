@@ -16,12 +16,6 @@
   </div>
 </div>
 <div class="field">
-  <label class="label" for="password-confirm">password</label>
-  <div class="control">
-  <input class="input" type="password"  name="password_confirm" id="password_confirm"> 
-  </div>
-</div>
-<div class="field">
   <div class="control">
  <input class="button-is-primary" type="submit">
   
