@@ -22,18 +22,22 @@ header('Location: /login');
     
   }
   public function login(){
+  
     $user= User::where('email', $_POST['email']);
     $user = $user[0] ?? null;
     if($user && password_verify($_POST['password'], $user->password)){
+      $user->save();
       $_SESSION['user'] = $user->id;
       header('Location: /');
     } else {
+      $_SESSION['error'] = 'wrong email or pass';
       header('Location: /login');
     }
 
   }
   public function loginForm(){
     view('auth/login');
+    unset($_SESSION['error']);
   }
   public function logout(){
     unset($_SESSION['user']);
