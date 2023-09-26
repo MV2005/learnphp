@@ -18,10 +18,11 @@ header('Location: /login');
 }
   public function registerForm(){
     view('auth/register');
+
     
   }
   public function login(){
-    
+    var_dump();
   }
   public function loginForm(){
     view('auth/login');
