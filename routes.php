@@ -1,6 +1,7 @@
 <?php
 
 use App\Controllers\ArticlesController;
+use App\Controllers\UserController;
 use App\Controllers\AuthController;
 use App\Router;
 use App\Controllers\PublicController;
@@ -25,3 +26,11 @@ Router::get('/register', [AuthController::class, 'registerForm']);
 Router::post('/login', [AuthController::class, 'login']);
 Router::get('/login', [AuthController::class, 'loginForm']);
 Router::get('/logout', [AuthController::class, 'logout']);
+
+Router::get('/admin/users', [UserController::class, 'index']);
+Router::get('/admin/users/edit', [UserController::class, 'edit']);
+Router::post('/admin/users/edit', [UserController::class, 'update']);
+Router::get('/admin/users/view', [UserController::class, 'show']);
+Router::get('/admin/users/new', [UserController::class, 'newUserForm']);
+Router::post('/admin/users/new', [UserController::class, 'newUser']);
+Router::get('/admin/users/delete', [UserController::class, 'delete']);
